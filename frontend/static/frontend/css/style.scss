@@ -16,12 +16,13 @@ body {
 
 div#todo {
     width: 50rem;
-    margin-top: 10rem;
+    margin-top: 5%;
     background: white;
     box-shadow: rgba(0, 0, 0, .5) 1rem 1rem;
     
     button {
         color: white;
+        margin: .2rem;
     }
 
     div#add-panel {
@@ -34,6 +35,8 @@ div#todo {
     ul#todo-list {
         padding: 2rem;
         list-style: none;
+        height: 30rem;
+        overflow-y: auto;
 
         li.todo-element {
             display: flex;

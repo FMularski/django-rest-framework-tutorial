@@ -22,7 +22,7 @@ body {
 
 div#todo {
   width: 50rem;
-  margin-top: 10rem;
+  margin-top: 5%;
   background: white;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 1rem 1rem;
           box-shadow: rgba(0, 0, 0, 0.5) 1rem 1rem;
@@ -30,6 +30,7 @@ div#todo {
 
 div#todo button {
   color: white;
+  margin: .2rem;
 }
 
 div#todo div#add-panel {
@@ -48,6 +49,8 @@ div#todo div#add-panel {
 div#todo ul#todo-list {
   padding: 2rem;
   list-style: none;
+  height: 30rem;
+  overflow-y: auto;
 }
 
 div#todo ul#todo-list li.todo-element {

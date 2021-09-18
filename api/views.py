@@ -57,7 +57,7 @@ def task_update(request, pk):
         serializer.save()
         return Response(serializer.data, status.HTTP_200_OK)
 
-    return Response(serializer.erros, status.HTTP_400_BAD_REQUEST)
+    return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['DELETE'])
