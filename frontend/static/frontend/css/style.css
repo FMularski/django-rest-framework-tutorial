@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: cornflowerblue;
+}
+
+div#todo {
+  width: 50rem;
+  margin-top: 10rem;
+  background: white;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 1rem 1rem;
+          box-shadow: rgba(0, 0, 0, 0.5) 1rem 1rem;
+}
+
+div#todo button {
+  color: white;
+}
+
+div#todo div#add-panel {
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div#todo ul#todo-list {
+  padding: 2rem;
+  list-style: none;
+}
+
+div#todo ul#todo-list li.todo-element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: cornflowerblue;
+}
+
+div#todo {
+    width: 50rem;
+    margin-top: 10rem;
+    background: white;
+    box-shadow: rgba(0, 0, 0, .5) 1rem 1rem;
+    
+    button {
+        color: white;
+    }
+
+    div#add-panel {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    ul#todo-list {
+        padding: 2rem;
+        list-style: none;
+
+        li.todo-element {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+    }
+}
