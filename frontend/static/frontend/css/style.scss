@@ -43,6 +43,16 @@ div#todo {
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
+
+            span.todo-title {
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &.stroke {
+                    text-decoration: line-through;
+                }
+            }
         }
     }
 }

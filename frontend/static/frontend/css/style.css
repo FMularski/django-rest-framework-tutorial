@@ -65,4 +65,12 @@ div#todo ul#todo-list li.todo-element {
           align-items: center;
   margin-bottom: 1rem;
 }
+
+div#todo ul#todo-list li.todo-element span.todo-title:hover {
+  cursor: pointer;
+}
+
+div#todo ul#todo-list li.todo-element span.todo-title.stroke {
+  text-decoration: line-through;
+}
 /*# sourceMappingURL=style.css.map */

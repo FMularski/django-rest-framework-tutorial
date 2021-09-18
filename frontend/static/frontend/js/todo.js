@@ -10,7 +10,7 @@
             resJson.forEach(task => {
                 todoList.innerHTML += 
                 '<li class="todo-element">' + 
-                    '<span class="todo-title">' + task.title + '</span>' + 
+                    '<span class="todo-title ' + (task.completed ? 'stroke' : '') + '" task-id="' + task.pk + '">' + task.title + '</span>' + 
                     '<div class="buttons">' + 
                         '<button class="edit-btn btn btn-info" task-id="' + task.pk + '"><i class="fas fa-pen"></i></button>' + 
                         '<button class="delete-btn btn btn-danger" task-id="' + task.pk + '"><i class="fas fa-minus"></i></button>' + 
@@ -21,6 +21,7 @@
         .then(() => {
             prepareEdit();
             prepareDelete();
+            prepareStrike();
         });
     }
 
@@ -46,7 +47,7 @@
             inputField.value = '';
             todoList.innerHTML = 
             '<li class="todo-element">' + 
-                '<span class="todo-title">' + task.title + '</span>' + 
+                '<span class="todo-title ' + (task.completed ? 'stroke' : '') + '" task-id="' + task.pk + '">' + task.title + '</span>' + 
                 '<div class="buttons">' + 
                     '<button class="edit-btn btn btn-info" task-id="' + task.pk + '"><i class="fas fa-pen"></i></button>' + 
                     '<button class="delete-btn btn btn-danger" task-id="' + task.pk + '"><i class="fas fa-minus"></i></button>' + 
@@ -56,6 +57,7 @@
         .then(() => {
             prepareEdit();
             prepareDelete();
+            prepareStrike();
         });
     });
 
@@ -120,6 +122,33 @@
         })
         .then(() => {
             taskElement.remove();
+        })
+    }
+
+    function prepareStrike() {
+        const titles = document.querySelectorAll('.todo-title');
+        titles.forEach(title => {
+            title.addEventListener('click', () => {
+                const id = title.getAttribute('task-id');
+                title.classList.toggle('stroke');
+                strike(id, title);
+            })
+        })
+    }
+
+    function strike(id, title) {
+        const token = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+        fetch('/api/task-update/' + id + '/', {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': token
+            },
+            body: JSON.stringify({
+                'title': title.innerText, 
+                'completed': title.classList.contains('stroke')
+            })
         })
     }
 
