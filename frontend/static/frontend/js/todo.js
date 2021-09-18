@@ -12,13 +12,16 @@
                 '<li class="todo-element">' + 
                     '<span class="todo-title">' + task.title + '</span>' + 
                     '<div class="buttons">' + 
-                        '<button class="edit-btn btn btn-info" edit-id="' + task.pk + '"><i class="fas fa-pen"></i></button>' + 
-                        '<button class="delete-btn btn btn-danger"><i class="fas fa-minus"></i></button>' + 
+                        '<button class="edit-btn btn btn-info" task-id="' + task.pk + '"><i class="fas fa-pen"></i></button>' + 
+                        '<button class="delete-btn btn btn-danger" task-id="' + task.pk + '"><i class="fas fa-minus"></i></button>' + 
                     '</div>' + 
                 '</li>';
             })
         })
-        .then(() => prepareEdit());
+        .then(() => {
+            prepareEdit();
+            prepareDelete();
+        });
     }
 
     const addBtn = document.querySelector('#add-btn');
@@ -45,19 +48,22 @@
             '<li class="todo-element">' + 
                 '<span class="todo-title">' + task.title + '</span>' + 
                 '<div class="buttons">' + 
-                    '<button class="edit-btn btn btn-info" edit-id="' + task.pk + '"><i class="fas fa-pen"></i></button>' + 
-                    '<button class="delete-btn btn btn-danger"><i class="fas fa-minus"></i></button>' + 
+                    '<button class="edit-btn btn btn-info" task-id="' + task.pk + '"><i class="fas fa-pen"></i></button>' + 
+                    '<button class="delete-btn btn btn-danger" task-id="' + task.pk + '"><i class="fas fa-minus"></i></button>' + 
                 '</div>' + 
             '</li>' + todoList.innerHTML;
         })
-        .then(() => prepareEdit());
+        .then(() => {
+            prepareEdit();
+            prepareDelete();
+        });
     });
 
     function prepareEdit() {
         const editBtns = document.querySelectorAll('.edit-btn');
 
         editBtns.forEach(btn => {
-            const id = btn.getAttribute('edit-id');
+            const id = btn.getAttribute('task-id');
             const title = btn.parentNode.parentNode.children[0];
             btn.addEventListener('click', () => {
                 edit(id, title);
@@ -87,6 +93,33 @@
         })
         .catch(err => {
             console.log(err);
+        })
+    }
+
+    function prepareDelete() {
+        const delBtns = document.querySelectorAll('.delete-btn');
+
+        delBtns.forEach(btn => {
+            const id = btn.getAttribute('task-id');
+            const taskElement = btn.parentNode.parentNode;
+            btn.addEventListener('click', () => {
+                del(id, taskElement);
+            })
+        })
+    }
+
+    function del(id, taskElement) {
+        const token = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+        fetch('/api/task-delete/' + id + '/', {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': token
+            }
+        })
+        .then(() => {
+            taskElement.remove();
         })
     }
 
