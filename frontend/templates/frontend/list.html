@@ -15,6 +15,7 @@
     
     <div id="todo">
         <div id="add-panel">
+            {% csrf_token %}
             <input type="text" id="add-input" class="form-control">
             <button id="add-btn" class="btn btn-info"><i class="fas fa-plus"></i></button>
         </div>
